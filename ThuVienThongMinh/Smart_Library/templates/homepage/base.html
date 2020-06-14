@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>..:: SMART LIBRARY ::..</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="OneTech shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block cssblock %}
+    {% endblock %}
+</head>
+
+<body onload="start();" onmousedown="ResetTimers();">
+{% include 'book/navbar.html' %}
+{% block content %}
+
+{% endblock %}
+
+{% include 'homepage/footer.html' %}
+
+{% block jsblock %}
+
+{% endblock %}
+</body>
+
+
+<script>
+var timoutWarning = 5000; // Display warning in 14 Mins.
+var timoutNow = 120000; // Timeout in 15 mins.
+var logoutUrl = 'http://127.0.0.1:8000/'; // URL to logout page.
+var m=2;
+var s=0;
+var timeout1 = null;
+var warningTimer;
+var timeoutTimer;
+
+
+//socket
+var myVar = setInterval(check,100);
+        function check() {
+            $.get("/checkbook/", function(data) {
+                console.log(data.id_book);
+        });
+        }
+// Start timers.
+function StartTimers() {
+    warningTimer = setTimeout("IdleWarning()", timoutWarning);
+
+    timeoutTimer = setTimeout("IdleTimeout()", timoutNow);
+}
+
+// Reset timers.
+function ResetTimers() {
+    s=0;
+    m=2;
+    clearTimeout(warningTimer);
+    clearTimeout(timeoutTimer);
+    clearTimeout(timeout1);
+    start_count();
+    StartTimers();
+    $("#timeout").dialog('close');
+}
+
+// Show idle timeout warning dialog.
+function IdleWarning() {
+     $("#timeout").dialog({
+        modal: true
+    });
+}
+
+// Logout the user.
+function IdleTimeout() {
+    window.location = logoutUrl;
+}
+
+
+	function start_count(){
+		if( s === -1){
+			m -= 1;
+			s = 59;
+		}
+		if( m === -1){
+			clearTimeout(timeout1);
+			return false;
+		}
+		document.getElementById('m').innerText = m.toString();
+        document.getElementById('s').innerText = s.toString();
+		timeout1=setTimeout(function(){
+			s--;
+			start_count();
+		}, 1000);
+	}
+	function start(){
+	    start_count();
+	    StartTimers();
+	}
+</script>
+</html>

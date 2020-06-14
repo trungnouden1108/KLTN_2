@@ -1,0 +1,142 @@
+{% load static %}
+{% load widget_tweaks %}
+
+	<header class="header">
+		<div class="header_content d-flex flex-row align-items-center justify-content-start">
+
+			<!-- Hamburger -->
+			<div class="hamburger menu_mm"><i class="fa fa-bars menu_mm" aria-hidden="true"></i></div>
+
+			<!-- Logo -->
+			<div class="header_logo">
+				<a href="{% url 'book' %}"><div>Smart<span> Library</span></div></a>
+			</div>
+
+			<!-- Navigation -->
+			<nav class="header_nav">
+				<ul class="d-flex flex-row align-items-center justify-content-start">
+					<li><a href="{% url 'book' %}">Home</a></li>
+					<li><a href="{% url 'muonsach' %}">Mượn Sách</a></li>
+					<li><a href="{% url 'trasach' %}">Trả Sách</a></li>
+					<li><a href="{% url 'contact' %}">Liên hệ</a></li>
+				</ul>
+			</nav>
+
+			<!-- Header Extra -->
+			<div class="header_extra ml-auto d-flex flex-row align-items-center justify-content-start">
+
+				<!-- Language -->
+				<div class="info_languages has_children">
+					<div class="language_flag"><a href="{% url 'login_new' %}"><b>Đăng xuất</b></a></div>
+				</div>
+
+				<!-- Currency -->
+				<div class="info_currencies has_children">
+					<div class="dropdown_text"><a href="{% url 'detailuser' %}"><b>{{tenDG}}</b></a></div>
+					<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+
+				</div>
+
+
+
+			</div>
+
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu d-flex flex-column align-items-start justify-content-start menu_mm trans_400">
+		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+		<div class="menu_top d-flex flex-row align-items-center justify-content-start">
+
+			<!-- Language -->
+			<div class="info_languages has_children">
+				<div class="language_flag"><a href="{% url 'login_new' %}"><b>Đăng xuất</b></a></div>
+				<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+
+			</div>
+
+			<!-- Currency -->
+			<div class="info_currencies has_children">
+				<div class="dropdown_text"><a href="{% url 'detailuser' %}"><b>{{tenDG}}</b></a></div>
+				<div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+			</div>
+
+		</div>
+		<div class="menu_search">
+			<form class="header_search_form menu_mm">
+				{% render_field form.title class="search_input menu_mm" placeholder="Search..." type="search" required="required" %}
+				<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
+					<i class="fa fa-search menu_mm" aria-hidden="true"></i>
+				</button>
+			</form>
+		</div>
+		<nav class="menu_nav">
+			<ul class="menu_mm">
+				<li class="{% url 'book' %}"><a href="index.html">Home</a></li>
+				<li class="menu_mm"><a href="{% url 'muonsach' %}">Mượn sách</a></li>
+				<li class="menu_mm"><a href="{% url 'trasach' %}">Trả sách</a></li>
+				<li class="menu_mm"><a href="{% url 'contact' %}">Liên hệ</a></li>
+			</ul>
+		</nav>
+		<div class="menu_extra">
+			<div class="menu_social">
+				<ul>
+					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Sidebar -->
+
+	<div class="sidebar">
+
+		<!-- Info -->
+		<div class="info">
+			<div class="info_content d-flex flex-row align-items-center justify-content-start">
+
+				<!-- Language -->
+
+
+				<!-- Currency -->
+				<div class="info_currencies has_children">
+					<div class="dropdown_text"><a href="{% url 'detailuser' %}"><b>{{tenDG}}</b></a></div>
+					<div>-------</div>
+					<div class="dropdown_text"><a class="sign_out" href="{% url 'login_new' %}"><b>Đăng xuất</b></a></div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!-- Logo -->
+		<div class="sidebar_logo">
+			<a href="{% url 'book' %}"><div>Smart<span> Lirabry</span></div></a>
+		</div>
+
+		<!-- Sidebar Navigation -->
+		<nav class="sidebar_nav">
+			<ul>
+				<li><a href="{% url 'book' %}">Home<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+				<li><a href="{% url 'muonsach' %}">Mượn sách<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+				<li><a href="{% url 'trasach' %}">Trả sách<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+				<li><a href="{% url 'contact' %}">Liên hệ<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+			</ul>
+		</nav>
+
+		<!-- Search -->
+		<div class="search">
+			<form  class="search_form" id="sidebar_search_form">
+				{% render_field form.title class="search_input" placeholder="Search..." type="search" required="required" %}
+				<button type="submit" class="search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+			</form>
+		</div>
+
+		<!-- Cart -->
+
+	</div>

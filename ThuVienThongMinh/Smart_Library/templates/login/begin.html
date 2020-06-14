@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>..:: SMART LIBRARY ::..</title>
+    <style>
+
+
+    .button-1 {
+        background-color: #33FFCC;
+        color: black;
+        padding: 75px 75px 75px 75px;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 20%;
+        font-size: 30px;
+        border: 2px solid #DC143C;
+        margin: 200px 0px 200px 400px;
+
+    }
+
+    .button-2{
+        background-color: #33FFCC;
+        color: black;
+        padding: 75px 75px 75px 75px;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 20%;
+        font-size: 30px;
+        border: 2px solid #DC143C;
+        margin: 200px 100px 200px 0px;
+
+    }
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+    body{
+         background-image: url("../static/image_web/library.jpg");
+
+       }
+
+    .animate {
+            -webkit-animation: animatezoom 3ss;
+            animation: animatezoom 3s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {-webkit-transform: scale(0)}
+            to {-webkit-transform: scale(1)}
+        }
+
+        @keyframes animatezoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+    }
+
+    .alert {
+        margin: 0px 400px 0px 400px;
+        padding: 20px;
+        background-color: #33FFCC;
+        color: black;
+}
+    .closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.closebtn:hover {
+  color: black;
+}
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <div align="center" class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong>{{ message }} </strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <button class="button-1 animate" onclick="location.href='{% url 'script' %}'" >Register</button>
+    <button class="button-2 animate" onclick="location.href='{% url 'check' %}'">Login</button>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+
+    var myVar = setInterval(check,100);
+        function check() {
+            $.get("/checkbook/", function(data) {
+                console.log(data.id_book);
+                const a=document.getElementById('id2');
+                a.value=data.id_book;
+        });
+        }
+
+    </script>
+
+</html>

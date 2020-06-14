@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>..:: SMART LIBRARY ::..</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css_1/sourcesanspro-font.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css_1/style.css' %}"/>
+</head>
+<body class="form-v8">
+{% if messages %}
+        {% for message in messages %}
+            <div align="center" class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong>{{ message }} </strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+	<div class="page-content">
+		<div class="form-v8-content">
+			<div class="form-left">
+				<img src="{% static 'images_1/book.jpg' %}" width="430px" alt="form">
+			</div>
+			<div class="form-right">
+				<div class="tab">
+					<div class="tab-inner">
+						<button class="tablinks_1" >Sign Up</button>
+					</div>
+					<div class="tab-inner">
+						<button class="tablinks" onclick="location.href='{% url 'login_new' %}'">Sign In</button>
+					</div>
+				</div>
+				<form class="form-detail" action="." method="post" autocomplete="off">
+					{% csrf_token %}
+					<div class="tabcontent" id="sign-up">
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input placeholder="tap you card" type="password" maxlength="8" name="id_DG" id="id_check" class="input-text viewpass" autofocus required>
+		  						<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row-last">
+							<input type="submit" name="Next" class="register" value="Next">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script>
+	var check=document.getElementById('id_check');
+	var myfun=setInterval(checkdata,500);
+	var xoa=setInterval(stop,10000);
+
+    function checkdata(){
+    	if (check.value != "")
+    	{
+    		check.select();
+    	}
+    }
+    	function stop(){
+    			check.value="";
+    	}
+
+	$(document).ready(function(){
+ 	$('.viewpass').mousedown(function(){
+ 	$('.input-text').prop('type','text');
+ 	}).mouseup(function(){
+ 	$('.input-text').prop('type','password');
+ 	});
+ 	});
+
+
+	//socket
+	var myVar = setInterval(check_book,100);
+        function check_book() {
+            $.get("/checkbook/", function(data) {
+                console.log(data.id_book);
+        });
+        }
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .input_form{
+    margin-left: 30%
+    }
+    .signupbtn {
+    margin: 0px 0px 0px 400px;
+  width: 10%;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+        <p class="input_form"><label><b>ID Sách:</b> </label></p>
+        <input id="id" class="input_form" type="text" name="id_book" value="{{ id_book }}">
+        <p class="input_form"><label><b>Tên sách:</b></label></p>
+        <p class="input_form">{{ b.title }}</p>
+        <p class="input_form"><label><b>Thể loại:</b></label></p>
+        <p class="input_form">{{ b.category }}</p>
+        <p class="input_form"><label><b>Nội dung:</b></label></p>
+        <p class="input_form">{{ b.description }}</p>
+        <p class="input_form"><label><b>số lượng:</b></label></p>
+        <p class="input_form">{{ b.sl }}</p>
+        <p class="input_form"><label><b>Ảnh bìa:</b></label></p>
+        <p class="input_form">{{ b.image_book }}</p>
+        <p class="input_form"><label><b>Trạng thái:</b></label></p>
+        <p class="input_form">{{ b.active }} <b>Active</b></p>
+        <p class="input_form"><label><b>Dupli:</b></label></p>
+        <p class="input_form">{{ b.dup }} <b>Dup</b></p>
+        <button type="submit" class="signupbtn">Submit</button>
+    </form>
+</body>
+</html>

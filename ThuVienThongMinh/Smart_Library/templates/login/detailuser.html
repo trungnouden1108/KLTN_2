@@ -1,0 +1,205 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block cssblock %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap-4.1.3/bootstrap.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/product.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/product_responsive.css' %}">
+<style>
+
+</style>
+
+{% endblock %}
+{% block content %}
+<div class="super_container">
+	{% if messages %}
+        {% for message in messages %}
+            <div align="center" class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<h4><strong>{{ message }} </strong></h4>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+	<!-- Single Product -->
+	<div class="home">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/detailuser.jpg' %}" data-speed="0.8">
+		</div>
+	</div>
+<div class="section_container">
+
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="product_content_container d-flex flex-lg-row flex-column align-items-start justify-content-start">
+							<div class="product_content order-lg-1 order-2">
+								<div class="product_content_inner">
+									<form class="trung4-content" action="#">
+                						{% csrf_token %}
+										<label></label>
+										<h3 align="center" style="color:#bbe432"><b>Thông tin chi tiết độc giả</b></h3>
+                    					<hr>
+											<table>
+												<tr>
+													<th>
+													<img style="margin-left:35px" src="{{DG.image_user.url}}"  class="im_user" alt="">
+													</th>
+													<th>
+														<label class="input_form3"><b>ID Độc Giả:</b> </label>
+														<p><input  class="input_form3 form3" type="text" readonly="readonly" value="{{DG.id_DG}}"></p>
+														<label  class="input_form3"><b>Tên Độc Giả:</b></label>
+														<p><input  class="input_form3 form3" type="text" readonly="readonly" value="{{DG.ten_DG}}"></p>
+														<label  class="input_form3"><b>Email:</b> </label>
+														<p><input  class="input_form3 form3" type="text" readonly="readonly" value="{{DG.email_DG}}"></p>
+														<label  class="input_form3"><b>Số điện thoại:</b> </label>
+														<p><input  class="input_form3 form3" type="text" readonly="readonly" value="{{DG.phone}}"></p>
+														<label  class="input_form3"><b>Số tiền trong tài khoản:</b> </label>
+														<p><input  class="input_form3 form3 " type="text" readonly="readonly" value="{{DG.money_user}}"></p>
+															<label></label>
+													</th>
+												</tr>
+											</table>
+									</form>
+									{% if temp == 1 %}
+
+ 									<form class="trung4-content" action="#">
+										{% csrf_token %}
+            							<div class="container4">
+											<label></label>
+											<h3 align="center" style="color:#bbe432"><b>Thông tin mượn sách</b></h3>
+                    					<hr>
+											<table WIDTH=90%">
+												<tr>
+													{% if book1 != "" %}
+													<td>
+														<label></label>
+														<p><img style="margin-left:50px" src="{{img1.url}}" class="img_book" alt=""></p>
+													</td>
+													<td>
+														<label></label>
+														<p class="book_detail">{{book1}}</p>
+													</td>
+													<td width="22%">
+														<label></label>
+														{% if day1 < 7 %}
+														<p class="day">{{day1}} ngày</p>
+														{% endif %}
+														{% if day1 >= 7 %}
+														<p class="day_1">{{day1}} ngày</p>
+														{% endif %}
+													</td>
+													{% endif %}
+												</tr>
+
+												<tr>
+													{% if book2 != "" %}
+
+													<td>
+														<label></label>
+														<p><img style="margin-left:50px" src="{{img2.url}}" class="img_book" alt=""></p>
+													</td>
+													<td>
+														<label></label>
+														<p class="book_detail">{{book2}}</p>
+													</td>
+													<td  width="22%">
+														<label></label>
+														{% if day2 < 7 %}
+														<p class="day">{{day2}} ngày</p>
+														{% endif %}
+														{% if day2 >= 7 %}
+														<p class="day_1">{{day2}} ngày</p>
+														{% endif %}
+													</td>
+													{% endif %}
+												</tr>
+												<tr>
+													{% if book3 != "" %}
+													<td>
+														<label></label>
+														<p><img style="margin-left:50px" src="{{img3.url}}" class="img_book" alt=""></p>
+
+													</td>
+													<td>
+														<label></label>
+														<p class="book_detail">{{book3}}</p>
+													</td>
+													<td  width="22%">
+														<label></label>
+														{% if day3 < 7 %}
+														<p class="day">{{day3}} ngày</p>
+														{% endif %}
+														{% if day3 >= 7 %}
+														<p class="day_1">{{day3}} ngày</p>
+														{% endif %}
+													</td>
+													{% endif %}
+												</tr>
+
+											</table>
+											<label></label>
+										</div>
+									</form>
+									{% endif %}
+
+								</div>
+								<label></label>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	<!-- Recently Viewed -->
+
+
+
+</div>
+{% endblock %}
+{% block jsblock %}
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap-4.1.3/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap-4.1.3/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/Isotope/fitcolumns.js' %}"></script>
+<script src="{% static 'js/product.js' %}"></script>
+<script type="text/javascript">
+ function scanid1(){
+    $.get("/scan_muon/", function(data) {
+            console.log(data.tagid1);
+        const a=document.getElementById('tag_id1');
+        a.value=data.tagid1;
+    });
+}
+function scanid2(){
+    $.get("/scan_muon/", function(data) {
+            console.log(data.tagid1);
+        const a=document.getElementById('tag_id2');
+        a.value=data.tagid1;
+    });
+}
+function scanid3(){
+    $.get("/scan_muon/", function(data) {
+            console.log(data.tagid1);
+        const a=document.getElementById('tag_id3');
+        a.value=data.tagid1;
+    });
+}
+</script>
+{% endblock %}

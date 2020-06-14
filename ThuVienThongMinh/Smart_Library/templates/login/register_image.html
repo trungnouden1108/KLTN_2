@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>..:: SMART LIBRARY ::..</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css_1/sourcesanspro-font.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css_1/style.css' %}"/>
+</head>
+<body class="form-v8" onload="StartTimers();" onmousedown="ResetTimers();">
+{% if messages %}
+        {% for message in messages %}
+            <div align="center" class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong>{{ message }} </strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+	<div class="page-content">
+		<div class="form-v8-content">
+			<div class="form-left">
+			</div>
+			<div class="form-right">
+				<div class="tab">
+
+					<div class="tab-inner">
+						<button class="tablinks">Sign Up</button>
+					</div>
+				</div>
+				<form class="form-detail" action="." method="post">
+					{% csrf_token %}
+					<div align="center">
+					<div class="tabcontent" id="sign-up">
+						<img  src="{% url 'video' %}" alt="">
+						<div class="form-row-last" id="OK">
+							<input type="button" id="Back" name="Back" class="register" value="Back"  onclick="location.href='{% url 'register_infor' %}'">
+
+							<input type="submit" id="Next" name="Next" class="register" value="Next"  >
+						</div>
+					</div>
+						</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script>
+	var a=document.getElementById('OK').style.display='none';
+
+
+	var i,b;
+	var myfunc=setInterval(scan_user,3000);
+	setTimeout(() => { clearInterval(myfunc);},15000);
+
+		function scan_user(){
+    		$.get("/check_image/", function(data) {
+            console.log(data.image);
+			b=data.image;
+			if ( b == 1) {
+					console.log("OK");
+						var a=document.getElementById('OK').style.display='block';
+
+			}
+
+    		});}
+
+	//socket
+	var myVar = setInterval(check,100);
+        function check() {
+            $.get("/checkbook/", function(data) {
+                console.log(data.id_book);
+        });
+        }
+
+	//timeout
+	var timoutWarning = 5000; // Display warning in 14 Mins.
+var timoutNow = 60000; // Timeout in 15 mins.
+var logoutUrl = 'http://127.0.0.1:8000/'; // URL to logout page.
+
+var warningTimer;
+var timeoutTimer;
+function StartTimers() {
+    warningTimer = setTimeout("IdleWarning()", timoutWarning);
+    timeoutTimer = setTimeout("IdleTimeout()", timoutNow);
+}
+
+// Reset timers.
+function ResetTimers() {
+
+    clearTimeout(warningTimer);
+    clearTimeout(timeoutTimer);
+    StartTimers();
+    $("#timeout").dialog('close');
+}
+
+// Show idle timeout warning dialog.
+function IdleWarning() {
+     $("#timeout").dialog({
+        modal: true
+    });
+}
+
+// Logout the user.
+function IdleTimeout() {
+    window.location = logoutUrl;
+}
+	</script>
+</body>
+</html>

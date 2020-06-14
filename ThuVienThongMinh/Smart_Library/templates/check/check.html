@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Hello</p>
+    <input id="id2">
+
+</body>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+
+    var myVar = setInterval(check,00);
+        function check() {
+            $.get("/checkbook/", function(data) {
+                console.log(data.id_book);
+                const a=document.getElementById('id2');
+                a.value=data.id_book;
+        });
+        }
+
+    </script>
+</html>

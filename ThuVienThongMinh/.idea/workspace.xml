@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d9b4ac0-8cd2-41ee-9556-bbd236d87ea9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bRto68LM4FNOeDyPqutjEQIupF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Smart_Library/templates/login" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="I:\Đồ án\ThuVienThongMinh" />
+      <recent name="I:\Đồ án\ThuVienThongMinh\Image\8578FF00" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="I:\Đồ án\ThuVienThongMinh\Smart_Library\templates\login" />
+      <recent name="I:\Đồ án\ThuVienThongMinh\static" />
+      <recent name="I:\Đồ án\ThuVienThongMinh\Image\8578FF00" />
+      <recent name="I:\Đồ án\ThuVienThongMinh\static\images" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d9b4ac0-8cd2-41ee-9556-bbd236d87ea9" name="Default Changelist" comment="" />
+      <created>1588606905896</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588606905896</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="407" y="175" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590675274053">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="407" y="175" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1590675274053" />
+    <state x="468" y="123" key="FileChooserDialogImpl" timestamp="1590827714374">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="468" y="123" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590827714374" />
+    <state x="191" y="10" key="SettingsEditor" timestamp="1589130140547">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="191" y="10" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1589130140547" />
+    <state x="396" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1592138357632">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="396" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592138357632" />
+    <state x="309" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1590410271904">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="309" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1590410271904" />
+  </component>
+</project>

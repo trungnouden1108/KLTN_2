@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div marin-left="auto" margin-right="auto" align="center">
+    <p><b>Xin chào: {{ id_user }}</b></p>
+    <a href="{% url 'scan_sach' %}"><b>Mượn sách</b></a>
+    <a href="{% url 'scan_tra' %}"><b>Trả sách</b></a>
+</div>
+{% csrf_token %}
+    {% for book in list_book %}
+        {% if book.active == True %}
+        <h3>Tên: <a href="/listbook/{{book.id}}"> {{ book.title }}</a></h3>
+        <p><img src="{{book.image_book.url}}" width="200px" height="100px" /></p>
+        {% endif %}
+    {% endfor %}
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    function addcart(id){
+        $.post('/addcart/',{'id':id,'csrfmiddlewaretoken':'{{csrf_token}}'},function(data){
+            alert('Thêm sách vào giỏ hàng thành công')
+        });
+    }
+</script>
+</html>

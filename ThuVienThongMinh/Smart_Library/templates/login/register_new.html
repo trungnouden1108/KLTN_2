@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>..:: SMART LIBRARY ::..</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css_1/sourcesanspro-font.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css_1/style.css' %}"/>
+</head>
+<body class="form-v8">
+	<div class="page-content">
+		<div class="form-v8-content">
+			<div class="form-left">
+				<img src="{% static 'images_1/book.jpg' %}" width="430px" alt="form">
+			</div>
+			<div class="form-right">
+				<div class="tab">
+					<div class="tab-inner">
+						<button class="tablinks_1" >Sign Up</button>
+					</div>
+					<div class="tab-inner">
+						<button class="tablinks">Sign In</button>
+					</div>
+				</div>
+				<form class="form-detail" action="#" method="post">
+					<div class="tabcontent" id="sign-up">
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input placeholder="tap you card" type="text" readonly="readonly" name="id_check" id="id_check" class="input-text" required>
+		  						<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row-last">
+							<input type="submit" name="Next" class="register" value="Next">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script>
+	var myfunc=setInterval(scan_user,2000);
+		function scan_user(){
+    		$.get("/scan_user/", function(data) {
+            console.log(data.id_user);
+        const a=document.getElementById('id_check');
+
+        	a.value=data.id_user;
+
+    		});
+}
+
+	</script>
+</body>
+</html>

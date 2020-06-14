@@ -1,0 +1,119 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block cssblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap-4.1.3/bootstrap.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/product.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/product_responsive.css' %}">
+
+
+{% endblock %}
+{% block content %}
+<div class="super_container">
+	<div class="home">
+		<div class="parallax_background parallax-window" data-parallax="scroll">
+			<img src="{% static 'images/book2.png' %}" height="400" width="1100px">
+		</div>
+	</div>
+	{% if messages %}
+        {% for message in messages %}
+            <div align="center" class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<h4><strong>{{ message }} </strong></h4>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+	<!-- Single Product -->
+
+	<div class="single_product">
+		<div class="container">
+			<div class="row">
+
+				<form class="trung5-content" action="." method="post">
+					{% csrf_token %}
+					<div class="container3">
+						<h3 align="center">Đánh giá của bạn</h3>
+					<hr>
+						<table class="ta">
+							{% if name_book1 != "" %}
+							<tr>
+								<td class="td1">
+									<p><input  class="form4" type="text" readonly="readonly" value="{{name_book1}}"></p>
+								</td>
+								<td class="td1">
+									<h6></h6>
+									<div class="rating ">
+									<input type="radio" name="star" value="5" id="star1"><label for="star1"></label>
+									<input  type="radio" name="star" value="4" id="star2"><label for="star2"></label>
+									<input type="radio" name="star" value="3" id="star3"><label for="star3"></label>
+									<input type="radio" name="star" value="2" id="star4"><label for="star4"></label>
+									<input type="radio" name="star" value="1" id="star5"><label for="star5"></label>
+									</div>
+								</td>
+							</tr>
+							{% endif %}
+
+						</table>
+
+					<div class="clearfix1">
+						<p class="input_form5"></p>
+                    <button type="button" onclick="location.href='{% url 'book' %}'" class="cancelbtn">Bỏ qua</button>
+                    <button type="submit" class="signupbtn">Đánh giá</button>
+        			</div>
+					</div>
+				</form>
+				</div>
+		</div>
+	</div>
+
+
+	<!-- Recently Viewed -->
+
+
+
+</div>
+{% endblock %}
+{% block jsblock %}
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'js/product_custom.js' %}"></script>
+<script type="text/javascript">
+ function scanid1(){
+    $.get("/scan_muon/", function(data) {
+            console.log(data.tagid1);
+        const a=document.getElementById('tag_id1');
+        a.value=data.tagid1;
+    });
+}
+function scanid2(){
+    $.get("/scan_muon/", function(data) {
+            console.log(data.tagid1);
+        const a=document.getElementById('tag_id2');
+        a.value=data.tagid1;
+    });
+}
+function scanid3(){
+    $.get("/scan_muon/", function(data) {
+            console.log(data.tagid1);
+        const a=document.getElementById('tag_id3');
+        a.value=data.tagid1;
+    });
+}
+</script>
+{% endblock %}

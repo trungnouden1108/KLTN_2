@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>..:: SMART LIBRARY ::..</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="OneTech shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block cssblock %}
+    {% endblock %}
+</head>
+
+<body onload="StartTimers();" onmousemove="ResetTimers();">
+{% include 'book/navbar.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+{% include 'homepage/footer.html' %}
+
+{% block jsblock %}
+
+{% endblock %}
+</body>
+<script>
+var timoutWarning = 5000; // Display warning in 14 Mins.
+var timoutNow = 10000; // Timeout in 15 mins.
+var logoutUrl = 'http://127.0.0.1:8000/'; // URL to logout page.
+
+var warningTimer;
+var timeoutTimer;
+
+// Start timers.
+function StartTimers() {
+    warningTimer = setTimeout("IdleWarning()", timoutWarning);
+    timeoutTimer = setTimeout("IdleTimeout()", timoutNow);
+}
+
+// Reset timers.
+function ResetTimers() {
+    clearTimeout(warningTimer);
+    clearTimeout(timeoutTimer);
+    StartTimers();
+    $("#timeout").dialog('close');
+}
+
+// Show idle timeout warning dialog.
+function IdleWarning() {
+     $("#timeout").dialog({
+        modal: true
+    });
+}
+
+// Logout the user.
+function IdleTimeout() {
+    window.location = logoutUrl;
+}
+</script>
+</html>

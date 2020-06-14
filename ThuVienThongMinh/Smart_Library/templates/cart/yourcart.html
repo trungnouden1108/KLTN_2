@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="." method="post">
+        {% csrf_token %}
+         <table border="">
+
+        <tr>
+            <th>Hình ảnh</th>
+            <th>ID Sách</th>
+            <th>Tên Sách</th>
+        </tr>
+
+     {% for key,value in request.session.cart.items %}
+        <tr>
+            <td><img style="height: 50px; width:50px; margin-left:auto; margin-right: auto;" src="{{value.image}}"/> </td>
+            <td>{{value.id_book}}</td>
+            <td>{{value.name}}</td>
+            <td><button type =button">Delete</button> </td>
+
+        </tr>
+     {% endfor %}
+     </table>
+         <button type="submit">Mượn sách</button>
+ </form>
+ <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+  $("button").click(function(){
+    $("{{value.id_book}}").remove();
+  });
+</script>
+
+</body>
+
+</html>

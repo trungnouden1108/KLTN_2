@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>..:: SMART LIBRARY ::..</title>
+     <style>
+        .modal {
+            display: block; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+           }
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+/* Modal Content/Box */
+        .modal-content {
+            background-color: #33FFCC;
+            margin: 0px 475px 100px 475px ; /* 15% from the top and centered */
+            border: 1px solid #33FFCC;
+            width: 30%; /* Could be more or less, depending on screen size */
+        }
+
+/* The Close Button */
+        .close {
+            /* Position it in the top right corner outside of the modal */
+            position: absolute;
+            right: 300px;
+            top: 25;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+/* Close button on hover */
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+/* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {-webkit-transform: scale(0)}
+            to {-webkit-transform: scale(1)}
+        }
+
+        @keyframes animatezoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+    }
+        @media screen and (max-width: 300px) {
+        .cancelbtn, .signupbtn {
+            width: 100%;
+        }
+        }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+        }
+
+    .input_form{
+    margin-left: 30%
+    }
+
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+    }
+
+/* Avatar image */
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+/* Add padding to containers */
+    .container {
+        padding: 16px;
+    }
+    .viewpass{
+            cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+        <div id="id01" class="modal">
+            <form class="modal-content" action="." method="post" >
+                {% csrf_token %}
+                <div class="container">
+                    <h1 align="center" >Sign Up</h1>
+                    <p align="center">Please fill in this form to create an account.</p>
+                    <hr>
+                    <p class="input_form"><label><b>ID Độc Giả:</b> </label></p>
+                    <input id="id" class="input_form" type="password" readonly="readonly" name="id_DG" value="{{ id_card }}" > <span class="viewpass" >❀</span>
+                    <p class="input_form"><label><b>Họ và tên:</b></label></p>
+                    <p class="input_form">{{ f.ten_DG }}</p>
+                    <p class="input_form"><label><b>Giới tính:</b></label>{{ f.gioitinh }}</p>
+                    <p class="input_form"><label><b>Email:</b></label></p>
+                    <p class="input_form">{{ f.email_DG }}</p>
+                    <p class="input_form"><label><b>CMND:</b></label></p>
+                    <p class="input_form">{{ f.CMND }}</p>
+                    <p class="input_form"><label><b>Số điện thoại:</b></label></p>
+                    <p class="input_form">{{ f.phone }}</p>
+                    <div id="ima" align="center" class="modal">
+                        <img  src="{% url 'video' %}" alt="">
+                        <span onclick="document.getElementById('ima').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                    <div class="clearfix">
+                    <button type="button" onclick="location.href='{% url 'begin1' %}'" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                        </div>
+                </div>
+
+
+            </form>
+        </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+     $(document).ready(function(){
+ $('.viewpass').mousedown(function(){
+ $('.input_form').prop('type','text');
+ }).mouseup(function(){
+ $('.input_form').prop('type','password');
+ });
+ });
+
+    var myVar = setInterval(check,100);
+        function check() {
+            $.get("/checkbook/", function(data) {
+                console.log(data.id_book);
+                const a=document.getElementById('id2');
+                a.value=data.id_book;
+        });
+        }
+</script>
+</html>

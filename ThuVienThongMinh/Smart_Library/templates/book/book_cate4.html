@@ -1,0 +1,146 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block cssblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap-4.1.3/bootstrap.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/categories.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/categories_responsive.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="super_container">
+	<div class="home">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/book_background.png' %}" data-speed="0.8">
+		</div>
+	</div>
+	{% if messages %}
+        {% for message in messages %}
+            <div align="center" class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<h4><strong>{{ message }} </strong></h4>
+            </div>
+        {% endfor %}
+    {% endif %}
+	<!-- Header -->
+	<!-- Home -->
+
+
+
+	<!-- Products -->
+
+	<div class="products">
+
+		<!-- Sorting & Filtering -->
+		<div class="products_bar">
+			<div class="section_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="products_bar_content d-flex flex-column flex-xxl-row align-items-start align-items-xxl-center justify-content-start">
+								<div class="product_categories">
+									<ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+										<li class="active"><a href="/book/">Sách đang có</a></li>
+										<li><a href="/sachdangmuon/">Sách được mượn</a></li>
+										<li><a href="/sachdanhgiacao">Sách được đánh giá cao</a></li>
+									</ul>
+								</div>
+								<div class="products_bar_side ml-xxl-auto d-flex flex-row align-items-center justify-content-start">
+									<div class="products_dropdown product_dropdown_filter">
+										<div class="isotope_filter_text"><span><b>{{sl}}</b></span> <b>Sách tìm được</b></div>
+										<div class="isotope_filter_text"><span>Truyện, tiểu thuyết</span><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+										<ul>
+											<li><a class="a_trung" href="/book_giaotrinh/">Giáo trình</a></li>
+											<li><a class="a_trung" href="/book_vanhoc/">Văn học nghệ thuật</b></a></li>
+											<li><a class="a_trung" href="/book_tamly/">Tâm lý, tâm linh, tôn giáo</b></a></li>
+											<li><a class="a_trung" href="/book_truyen/">Truyện, tiểu thuyết</b></a></li>
+											<li><a class="a_trung" href="/book_vanhoa/">Văn hóa xã hội - Lịch sử</b></a></li>
+											<li><a class="a_trung" href="/book_khcn/">Khoa học công nghệ - Kinh tế</b></a></li>
+											<li><a class="a_trung" href="/book_chinhtri/">Chính trị - Pháp luật</b></a></li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="products_container grid">
+							{% csrf_token %}
+							{% for book in list_book %}
+							{% if book.active == True %}
+							 {% if book.new == True %}
+							<div class="product grid-item sale">
+								<div class="product_inner">
+									<div class="product_image">
+										<a href="/detailbook/{{book.id}}"><img src="{{book.image_book.url}}"width="300px" height="320px" alt=""></a>
+										<div class="product_tag">new</div>
+										<div class="product_content text-center">
+										<div class="product_title text-center"><a href="/detailbook/{{book.id}}">{{book.title}}</a></div>
+											<p class="bor"><b>Số lượng đang có: </b>{{book.sl}}</p>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+							{% endif %}
+							{% endif %}
+							{% endfor %}
+							{% for book in list_book %}
+							 {% if book.active == True %}
+							  {% if book.new == False %}
+							<!-- Product -->
+							<div class="product grid-item">
+								<div class="product_inner">
+									<div class="product_image">
+										<a href="/detailbook/{{book.id}}"><img src="{{book.image_book.url}}"width="300px" height="320px" alt=""></a>
+										<div class="product_content text-center">
+										<div class="product_title text-center"><a href="/detailbook/{{book.id}}">{{book.title}}</a></div>
+											<p class="bor"><b>Số lượng đang có: </b>{{book.sl}}</p>
+
+										</div>									</div>
+								</div>
+							</div>
+							{% endif %}
+							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block jsblock %}
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap-4.1.3/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap-4.1.3/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/Isotope/fitcolumns.js' %}"></script>
+<script src="{% static 'js/categories.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Screens</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <div align="center">
+                    <h1>Video Streaming</h1>
+                    <img  src="{% url 'videostream' stream_path='video' %}">
+                    <button onclick="location.href='{% url 'videostream' %}'">Capture</button>
+
+            </div>
+        </tr>
+    </table>
+
+</body>
+</html>
